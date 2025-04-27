@@ -1,13 +1,119 @@
+/* General Body */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Navbar */
+nav {
+  background-color: #0f172a;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  color: white;
+  font-size: 28px;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content Container */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Form Styling */
+form {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  max-width: 600px;
+  width: 90%;
+  margin-bottom: 3rem;
+}
+
+form h2 {
+  text-align: center;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+form input, form textarea, form select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+form button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #1d4ed8;
+}
+
+/* Dashboard Table */
+table {
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 30px;
+  background: white;
+  border-collapse: collapse;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+th, td {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  font-size: 16px;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+}
+
+/* Footer */
+footer {
+  background-color: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
 }

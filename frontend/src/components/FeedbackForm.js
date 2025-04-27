@@ -2,80 +2,40 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function FeedbackForm() {
-  const [formData, setFormData] = useState({
-    userName: '',
-    email: '',
-    feedbackText: '',
-    category: 'General'
-  });
+    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [feedbackText, setFeedbackText] = useState('');
+    const [category, setCategory] = useState('General');
 
-  const handleChange = (e) => {
-    setFormData({ 
-      ...formData, 
-      [e.target.name]: e.target.value 
-    });
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('http://localhost:5000/feedback', { userName, email, feedbackText, category });
+            alert('Feedback submitted!');
+            setUserName('');
+            setEmail('');
+            setFeedbackText('');
+            setCategory('General');
+        } catch (error) {
+            alert('Error submitting feedback');
+        }
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/feedback', formData);
-      alert('Feedback submitted successfully!');
-      setFormData({
-        userName: '',
-        email: '',
-        feedbackText: '',
-        category: 'General'
-      });
-    } catch (error) {
-      alert('Error submitting feedback!');
-    }
-  };
-
-  return (
-    <div>
-      <h2>Submit Feedback</h2>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="userName" 
-          placeholder="Your Name" 
-          value={formData.userName} 
-          onChange={handleChange}
-          required 
-        />
-        <br />
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="Your Email" 
-          value={formData.email} 
-          onChange={handleChange}
-          required 
-        />
-        <br />
-        <textarea 
-          name="feedbackText" 
-          placeholder="Your Feedback" 
-          value={formData.feedbackText} 
-          onChange={handleChange}
-          required 
-        />
-        <br />
-        <select 
-          name="category" 
-          value={formData.category} 
-          onChange={handleChange}
-        >
-          <option value="General">General</option>
-          <option value="Bug Report">Bug Report</option>
-          <option value="Feature Request">Feature Request</option>
-        </select>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Submit Feedback</h2>
+            <input type="text" placeholder="Name" value={userName} onChange={(e) => setUserName(e.target.value)} required />
+            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <textarea placeholder="Your Feedback" value={feedbackText} onChange={(e) => setFeedbackText(e.target.value)} required></textarea>
+            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="General">General</option>
+                <option value="Bug Report">Bug Report</option>
+                <option value="Feature Request">Feature Request</option>
+                <option value="Suggestion">Suggestion</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    );
 }
 
 export default FeedbackForm;
