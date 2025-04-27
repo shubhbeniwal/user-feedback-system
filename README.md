@@ -52,8 +52,6 @@ npm run start
 
 ### Frontend
 ```bash
-Copy
-Edit
 cd frontend
 npm install
 npm start
